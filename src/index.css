@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{scroll-behavior: smooth;}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+/* Hide the number input arrows */
+
+.fc .fc-toolbar-title {
+  font-size: 1.25rem !important; /* text-xl */
+  font-weight: 600 !important;   /* font-semibold */
+  color: #3563E9 !important;     /* Tailwind netural 500 */
+}
+.fc-button {
+  background: #3563E9 !important; /* Tailwind netural 500 */
+  border: none !important; /* border-none */
+  outline: none !important; /* outline-none */
+
+}
+
+
+
+.fc-col-header-cell{
+  border-radius:0.375rem 0 0 0 !important; 
+}
+.fc .fc-daygrid-day-number {
+  font-size: 0.875rem !important;
+  color: #4b5563 !important;     
+}
+.fc-day{
+  
+  font-weight: bold !important; 
+}
+/* .fc-day:hover{
+  background: #AEC8FC !important;
+} */
+.fc-day-today{
+  background-color: #dee8ff !important; 
+}
+.fc .fc-event {
+  border-radius: 0.2x5rem !important; 
+  padding : 0.25rem 0.025rem !important; 
+  margin-top: 0.25rem !important; 
+  font-size: 0.75rem !important;  
+  cursor: pointer !important; 
+}
+.fc-event-main{
+  color : #90A3BF;
+}
