@@ -6,6 +6,7 @@ import loaderSlice from '../slices/loaderSlice';
 import notificationSlice from '../slices/notificationSlice';  
 import authSlice from '../slices/authSlice'
 import carsSlice from '../slices/carsSlice'
+import bannerSlice from '../slices/bannerSlice'
 export const store = configureStore({
     reducer: {
         // Add your reducers here
@@ -15,7 +16,8 @@ export const store = configureStore({
         loaderSlice,
         notificationSlice,
         authSlice,
-        carsSlice
+        carsSlice,
+        bannerSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false,

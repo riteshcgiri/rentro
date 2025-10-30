@@ -1,27 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import AdHead from './AdHead';
+import AdHead from './carsSection/AdHead';
 import PickDrop from './PickDrop';
-import { adOne, adTwo } from '../Db/adData';
+import { useSelector, useDispatch } from 'react-redux';
+import { PatternOne, PatternTwo } from '../assets/svgs';
 
-const Landing = ({filterOpen, handleShowAd, showAd}) => {
+
+
+const Landing = ({ filterOpen, handleShowAd, showAd }) => {
+
 
     const [pickup, setPickUp] = useState({});
     const [dropoff, setDropOff] = useState({});
+    const { data, loading, error } = useSelector((state) => state.carsSlice);
     const handleSwap = () => {
         setPickUp(dropoff);
-        setDropOff(pickup); 
+        setDropOff(pickup);
     }
 
-  
+    const adData = [
+        {
+            id: data[4]?._id,
+            pattern: PatternOne,
+            heading: 'The Best Platform for Car Rental',
+            desc: 'Ease of doing a car rental safely and reliably. Of course at a low price.',
+            img: data[4]?.media.mainImage
+        },
+        {
+            id: data[10]?._id,
+            pattern: PatternTwo,
+            heading: 'Easy way to rent a car at a low price',
+            desc: 'Providing cheap car rental services and safe and comfortable facilities.',
+            img: data[10]?.media.mainImage
+        }
 
-    
-    
-    
+    ]
+
+
     return (
         <div className={`${showAd ? 'hidden' : 'block'}`}>
             <div className={`flex justify-between gap-5 overflow-hidden ${filterOpen ? 'hidden' : 'block'}`}>
-                <AdHead adDetails={{ ...adOne }} handleAdHead={handleShowAd} />
-                <AdHead adDetails={{ ...adTwo }} handleAdHead={handleShowAd} />
+                <AdHead adData={adData[0]} />
+                <AdHead adData={adData[1]} />
             </div>
             <div className='mt-5 flex items-center gap-10'>
                 <PickDrop id={'Pick-Up'} selectVals={setPickUp} />

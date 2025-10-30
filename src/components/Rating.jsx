@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Rating = (rating) => {
-    const userRating = rating.rating;
+    const userRating = typeof rating !== 'object' ? rating : rating.rating;
     return (
         <>
             {

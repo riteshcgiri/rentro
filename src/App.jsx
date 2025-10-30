@@ -173,8 +173,10 @@ function App() {
                         {showRentPage ?
                             <RentalPage rentalCar={rentalCar} setUserInputVal={setUserInputVal} userInputVal={userInputVal} /> :
                             <div className='flex-1 px-12 py-7 '>
+                              
                                 <ShowcaseCar selectedCar={selectedCar} handleHideAd={handleHideAd} setSelectedCar={setSelectedCar} showAd={showAd} setShowAd={setShowAd} />
-                                <Landing handleShowAd={handleShowAd} setSelectedCar={setSelectedCar} showAd={showAd} setShowAd={setShowAd} />
+                               
+                                <Landing handleShowAdContent={handleShowAd} setSelectedCar={setSelectedCar} showAd={showAd} setShowAd={setShowAd} />
                                 <div className='mt-7'>
                                     <CarSection heading={'Popular Car'} carData={isFilterOpen || isHomePageVisible ? cars.slice(0, 3) : cars.slice(0, 4)} handleRent={handleRent} />
                                     <CarSection heading={'Recommended Car'} carData={isFilterOpen || isHomePageVisible ? cars.slice(3, 6) : cars.slice(4)} handleRent={handleRent} />
