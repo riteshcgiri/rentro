@@ -7,6 +7,7 @@ import notificationSlice from '../slices/notificationSlice';
 import authSlice from '../slices/authSlice'
 import carsSlice from '../slices/carsSlice'
 import bannerSlice from '../slices/bannerSlice'
+import tripSwapperSlice from '../slices/tripSwapperSlice'
 export const store = configureStore({
     reducer: {
         // Add your reducers here
@@ -18,6 +19,7 @@ export const store = configureStore({
         authSlice,
         carsSlice,
         bannerSlice,
+        tripSwapperSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false,

@@ -19,27 +19,27 @@ const Time = ({setShowTime, setChooseTime}) => {
         setShowTime(false);
     }
     return (
-        <div className='flex flex-col gap-2 p-5 text-slate-700'>
+        <div className='flex flex-col w-fit gap-2 px-0 py-3  text-slate-700'>
             {/* Time Input Field */}
             <input 
                 type="time" 
                 name="setTime" 
-                id="setTime" 
+                id="setTime"
                 readOnly 
-                className='appearance-none outline-none bg-slate-200/60 focus:bg-slate-100 select-none p-5 rounded-md' 
+                className='appearance-none outline-none text-right select-none hidden rounded-md' 
                 value={newTime} 
             />
 
             {/* Time Selection Buttons */}
             <div className='flex justify-start gap-2 m-4'>
                 {/* Hour Buttons */}
-                <div className='grid grid-cols-4 gap-2 flex-1 text-sm'>
+                <div className='grid grid-cols-1 gap-2 text-sm'>
                     {[...Array(12).keys()].map((h) => {
-                        const displayHour = String(h + 1).padStart(2, "0"); // Convert to "01", "02", etc.
+                        const displayHour = String(h + 1).padStart(2, "0");
                         return (
                             <button key={displayHour}
                                 onClick={() => setHour(displayHour)}
-                                className={`p-2 rounded-md ${hour === displayHour ? "bg-blue-500 text-white" : "bg-slate-100 hover:bg-slate-200"}`}>
+                                className={`p-3 rounded-md ${hour === displayHour ? "bg-blue-500 text-white" : "bg-slate-100 hover:bg-slate-200"}`}>
                                 {displayHour}:00
                             </button>
                         );
@@ -47,12 +47,12 @@ const Time = ({setShowTime, setChooseTime}) => {
                 </div>
 
                 {/* AM/PM Buttons */}
-                <div className='w-1/4 flex flex-col gap-2 justify-center'>
-                    <button className={`w-full px-4 py-5 rounded-md ${amPm === "AM" ? "bg-blue-500 text-white" : "bg-slate-100 hover:bg-slate-200"}`} 
+                <div className='flex flex-col gap-2 items-start'>
+                    <button className={`w-full px-6 py-3 rounded-md ${amPm === "AM" ? "bg-blue-500 text-white" : "bg-slate-100 hover:bg-slate-200"}`} 
                         onClick={() => setAmPm("AM")}>
                         AM
                     </button>
-                    <button className={`w-full px-4 py-5 rounded-md ${amPm === "PM" ? "bg-blue-500 text-white" : "bg-slate-100 hover:bg-slate-200"}`} 
+                    <button className={`w-full px-6 py-3 rounded-md ${amPm === "PM" ? "bg-blue-500 text-white" : "bg-slate-100 hover:bg-slate-200"}`} 
                         onClick={() => setAmPm("PM")}>
                         PM
                     </button>

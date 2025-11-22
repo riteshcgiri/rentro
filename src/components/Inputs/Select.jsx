@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 
 
-const Select = ({ id, label, options = [], value, onChange }) => {
+const Select = ({ id, label, options = [], value, onChange, selectClass=true, isInputDiffer = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -123,7 +123,7 @@ const Select = ({ id, label, options = [], value, onChange }) => {
   return (
     <div className="w-full relative" ref={rootRef}>
       {label && (
-        <label htmlFor={baseId} className="text-md text-secondary-300 font-semibold">
+        <label htmlFor={baseId} className={`${isInputDiffer ? 'text-secondary-700' : 'text-md'} text-secondary-300 font-semibold`}>
           {selectLabel}
         </label>
       )}
@@ -137,7 +137,7 @@ const Select = ({ id, label, options = [], value, onChange }) => {
         tabIndex={0}
         onKeyDown={handleKeyDown}
         onClick={() => setIsOpen((o) => !o)}
-        className="bg-gray-100 px-5 py-4 rounded-md mt-1 cursor-pointer flex justify-between items-center transition focus:outline focus:outline-2 focus:outline-netural-500 focus:bg-white"
+        className={` ${!isInputDiffer ? 'bg-gray-100 px-5 py-4 focus:outline focus:outline-2 focus:outline-netural-500 focus:bg-white' : 'py-1 text-sm'} scrollbar-hide rounded-md mt-1 cursor-pointer flex justify-between items-center transition `}
       >
         {isOpen ? (
           <input
@@ -150,7 +150,7 @@ const Select = ({ id, label, options = [], value, onChange }) => {
             onClick={(e) => e.stopPropagation()}
           />
         ) : (
-          <span className={value != null ? "text-gray-900" : "text-gray-500"}>
+          <span className={value === null ? "text-gray-900" : "text-gray-500"}>
             {selectedOpt ? selectedOpt.label : `Select ${selectLabel || "option"}`}
           </span>
         )}
@@ -162,7 +162,7 @@ const Select = ({ id, label, options = [], value, onChange }) => {
           id={`${baseId}-listbox`}
           role="listbox"
           tabIndex={-1}
-          className="absolute z-10 mt-2 w-full bg-white rounded-xl p-2 flex flex-col gap-1 shadow-lg border border-gray-200 max-h-60 overflow-auto"
+          className={`absolute top-[120%] scrollbar-hide z-10 mt-2 w-fit bg-white rounded-xl p-2 flex flex-col gap-1 shadow-lg border border-gray-200 max-h-80 overflow-auto`}
         >
           {filteredOptions.length > 0 ? (
             filteredOptions.map((opt, index) => (
@@ -173,7 +173,7 @@ const Select = ({ id, label, options = [], value, onChange }) => {
                 aria-selected={value === opt.value}
                 ref={(el) => (optionRefs.current[index] = el)}
                 onMouseDown={() => handleSelect(opt)}
-                className={`px-4 py-2 cursor-pointer flex justify-between items-center rounded-lg transition ${highlightIndex === index ? "bg-blue-100" : "hover:bg-blue-50"
+                className={`px-4 py-2 cursor-pointer scrollbar-hide flex ${isInputDiffer ?  'justify-start text-nowrap items-center gap-3 min-w-[150px]' : 'justify-between items-center'} rounded-lg transition ${highlightIndex === index ? "bg-blue-100" : "hover:bg-blue-50"
                   }`}
               >
                 <span>{opt.label}</span>
